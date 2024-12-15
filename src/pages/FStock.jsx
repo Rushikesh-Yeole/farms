@@ -132,13 +132,13 @@ export default function StockListingsPage() {
     <div className="bg-green-50 min-h-screen py-10">
       <div className="max-w-4xl mx-auto p-8">
         {/* Sub-header style like "Saved" */}
-        <div className="bg-gradient-to-r from-blue-100 to-green-200 p-4 rounded-lg shadow-md flex items-center mb-6">
-          <div className="flex items-center space-x-2">
+        <div className="bg-gradient-to-r from-blue-100 to-green-200 p-4 rounded-lg shadow-md flex justify-center items-center mb-6">
+          <div className="flex items-center space-x-2 justify-center">
             {/* Optional Icon */}
             <div className="h-6 w-6 rounded-full text-slate-600 flex justify-center items-center">
               <span className="text-xl">📦</span>
             </div>
-            <h1 className="text-2xl font-semibold text-gray-900">Your Posted Stock</h1>
+            <h1 className="text-3xl text-center rounded-lg font-bold text-gray-900">Stock</h1>
           </div>
         </div>
 

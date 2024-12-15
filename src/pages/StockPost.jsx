@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-// Input Component for reusability
 const InputField = ({ label, type, name, value, onChange, placeholder, ...rest }) => (
   <div>
     <label className="block text-sm font-medium text-green-900 mb-2">{label}</label>
@@ -24,9 +24,9 @@ export default function FarmerPost() {
     pricePerKg: "",
     location: "",
     postDate: "",
-    farmerName: "",
-    phoneNumber: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +39,30 @@ export default function FarmerPost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+
+    // Prepare FormData object to send text and files
+    const form = new FormData();
+    for (const key in formData) {
+      if (key === "pictures") {
+        formData.pictures.forEach((file) => form.append("pictures[]", file)); // For multiple files
+      } else {
+        form.append(key, formData[key]);
+      }
+    }
+
+    // Send the data using fetch
+    fetch("/api/post-stock", {
+      method: "POST",
+      body: form,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Stock posted successfully:", data);
+        navigate("/fstock");
+      })
+      .catch((error) => {
+        console.error("Error posting stock:", error);
+      });
   };
 
   const fields = [
@@ -49,13 +72,11 @@ export default function FarmerPost() {
     { label: "Price Per Kg", name: "pricePerKg", type: "number", placeholder: "Enter price per kg" },
     { label: "Location", name: "location", type: "text", placeholder: "Enter location" },
     { label: "Post Date", name: "postDate", type: "date", placeholder: "" },
-    { label: "Farmer Name", name: "farmerName", type: "text", placeholder: "Enter farmer's name" },
-    { label: "Phone Number", name: "phoneNumber", type: "tel", placeholder: "Enter phone number" },
   ];
 
   return (
     <div className="bg-green-50 min-h-screen py-10">
-      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
+      <div className="max-w-2xl mx-auto bg-white shadow-md rounded-lg p-4">
         <h1 className="text-3xl font-bold text-green-700 text-center mb-6">Post Your Stock</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           {fields.map(({ label, name, type, placeholder, multiple, isFile }) => (
@@ -74,7 +95,9 @@ export default function FarmerPost() {
             type="submit"
             className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 text-lg font-medium"
           >
-            Post Stock
+          <Link to='/fstock'>
+          Post Stock
+          </Link>
           </button>
         </form>
       </div>

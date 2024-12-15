@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import FStock from './pages/FStock';
 import Spost from './pages/Stockpost';
+import FDPost from './pages/FDPost';
+import FDemand from './pages/FDemand';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import About from './pages/About';
@@ -16,6 +18,8 @@ export default function App() {
     <Route path='/' element={<Home />} />
     <Route path='/spost' element={<Spost />} />
     <Route path='/fstock' element={<FStock />} />
+    <Route path='/fdpost' element={<FDPost />} />
+    <Route path='/fdemand' element={<FDemand />} />
     <Route path='/sign-in' element={<SignIn />} />
     <Route path='/sign-up' element={<SignUp />} />
     <Route path='/about' element={<About />} />

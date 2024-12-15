@@ -15,24 +15,34 @@ export default function Header() {
         <FaSearch className="text-slate-600"/>
       </form> */}
       </Link>
-      <ul className='flex gap-4'>
+      <ul className='flex gap-3 rounded-sm justify-items-end'>
       <Link to='spost'>
-      <li className='hidden sm:inline text-slate-700 hover:underline'>
-              Stock Post 
+      <li className='text-slate-700 hover:underline'>
+              Post 
             </li>
         </Link>
       <Link to='fstock'>
-    <li className='hidden sm:inline text-slate-700 hover:underline'>
+      <li className='text-slate-700 hover:underline'>
             Stock
           </li>
       </Link>
+      <Link to='fdpost'>
+      <li className='text-slate-700 hover:underline'>
+            Demand 
+          </li>
+      </Link>
+      <Link to='fdemand'>
+      <li className='text-slate-700 hover:underline'>
+            Demands 
+          </li>
+      </Link>
       <Link to='/about'>
-          <li className='hidden sm:inline text-slate-700 hover:underline'>
+          <li className='text-xs hidden sm:inline text-slate-700 hover:underline'>
             About
           </li>
       </Link>
       <Link to='/Sign-in'>
-          <li className='hidden sm:inline text-slate-700 hover:underline'>
+          <li className='text-xs hidden sm:inline text-slate-700 hover:underline'>
             Sign In
           </li>
       </Link>
